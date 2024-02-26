@@ -15,15 +15,23 @@ const existeCompanyById = async (id = "") => {
   }
 };
 
+async function existeNombre(nombre = "") { 
+    const company = await Company.findOne({ nombre: nombre });
+    if (!company) { 
+        throw new Error('La compañia no existe')
+    }
+};
+
 async function existeCorreo(correo = "") {
   const company = await Company.findOne({ correo: correo });
   if (company) {
     throw new Error("La compañia ya esta registrada");
   }
-}
+};
 
 module.exports = {
   existeAdminById,
   existeCompanyById,
   existeCorreo,
+  existeNombre,
 };
