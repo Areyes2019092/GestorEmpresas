@@ -1,10 +1,42 @@
-const { response, json } = require("express");
-const bcrypt = require("bcrypt");
+import companyModel from "./company.model.js";
 
-const Admin = require("../models/admin.model");
-const Company = require("../models/company.model")
-const { check } = require("express-validator");
-const { existeAdminById } = require("../helpers/db-validator");
+export const companyPOST = async (req, res) => {
+    const { name, nivelImpacto, experiencia, category } = req.body;
+    const company = new companyModel({ name, nivelImpacto, experiencia, category });
+
+    await company.save();
+    res.status(200).json({
+        company,
+    });
+};
+
+
+/*
+
+const companyDelete = async (req, res) => {
+    const { id } = req.params;
+    await Company.findByIdAndUpdate(id, { estado: false });
+
+    const company = await Company.findOne({ _id: id });
+    res.status(200).json({
+        msg: "Compañia eliminada",
+        company,
+    })
+};
+
+
+const companyPut = async (req, res) => {
+    const { id } = req.params;
+    const { companyId, correo, password, ...resto } = req.body;
+    await Company.findByIdAndUpdate(id, resto);
+
+    const company = await Company.findOne({ _id: id });
+
+    res.status(200).json({
+        msg: "compania actualizada",
+        company,
+    });
+};
 
 const getCompany = async (req, res = response) => {
   const query = { estado: true };
@@ -30,46 +62,6 @@ const getCompanyById = async (req, res) => {
     });
 };
 
-const companyPost = async (req, res) => {
-    const { nombre, correo, password } = req.body;
-    const company = new Company({ nombre, correo, password });
 
-    await company.save();
-    res.status(200).json({
-        company,
-    });
-};
-
-const companyDelete = async (req, res) => {
-    const { id } = req.params;
-    await Company.findByIdAndUpdate(id, { estado: false });
-
-    const company = await Company.findOne({ _id: id });
-    res.status(200).json({
-        msg: "Compañia eliminada",
-        company,
-    })
-};
-
-/*
-const companyPut = async (req, res) => {
-    const { id } = req.params;
-    const { companyId, correo, password, ...resto } = req.body;
-    await Company.findByIdAndUpdate(id, resto);
-
-    const company = await Company.findOne({ _id: id });
-
-    res.status(200).json({
-        msg: "compania actualizada",
-        company,
-    });
-};
 */
 
-module.exports = {
-    getCompany,
-    getCompanyById,
-    companyPost,
-    companyDelete,
-    //companyPut,
-};

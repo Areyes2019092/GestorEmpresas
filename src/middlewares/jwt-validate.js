@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import adminModel from "../admin/admin.model";
+import adminModel from "../admin/admin.model.js";
 
 export const validateJWT = async(req, res, next) => {
     const token = req.header("x-token");

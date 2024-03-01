@@ -1,11 +1,28 @@
-const { Router } = require("express");
-const { check } = require("express-validator");
+import { Router } from "express";
+import { check } from "express-validator";
+import {
+  categoryExiste,
+  companyExiste,
+  impactoExiste,
+} from "../helpers/db-validator.js";
+import { validateJWT } from "../middlewares/jwt-validate.js";
+import { validarCampos } from "../middlewares/validarCampos.js";
+import { companyPOST } from "./company.controller.js";
 
-const { existeCorreo, existeCompanyById } = require("../helpers/db-validator");
+const router = Router();
 
-const {
-  getCompany,
-  getCompanyById,
-  companyPost,
-  companyDelete,
-} = require("../controllers/company.controller");
+router.post(
+  "/",
+  [
+    validateJWT,
+    check("name", "El nombre es obligatorio").not().isEmpty(),
+    check("name").custom(companyExiste),
+    check("nivelImpacto").custom(impactoExiste),
+    check("experiencia", "Debe ser un numero").isNumeric(),
+    check("category").custom(categoryExiste),
+    validarCampos,
+  ],
+  companyPOST
+);
+
+export default router;

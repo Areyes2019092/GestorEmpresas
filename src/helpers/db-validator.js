@@ -1,5 +1,44 @@
-import adminModel from "../admin/admin.model";
-import companyModel from "../company/company.model";
+import adminModel from "../admin/admin.model.js";
+import companyModel from "../company/company.model.js";
+
+export async function impactoExiste(nivelImpacto = "") {
+  if (
+    nivelImpacto !== "Importante" &&
+    nivelImpacto !== "Considerable" &&
+    nivelImpacto !== "Desechable"
+  ) {
+    throw new Error("Debe poner un nivel de importancia");
+  }
+}
+
+export async function usuarioExiste(correo = "") {
+  const user = await adminModel.findOne({ email: correo });
+  if (user) {
+    throw new Error("El usuario ya existe");
+  }
+}
+
+export async function companyExiste(name = "") {
+  const company = await companyModel.findOne({ name: name });
+  if (company) {
+    throw new Error("La compania ya existe");
+  }
+}
+
+export async function categoryExiste(category = "") {
+  const categoryPermitida = ["limpieza", "contabilidad", "programacion"];
+  if (!categoryPermitida.includes(category)) {
+    throw new Error("La categoria no existe");
+  }
+}
+
+export async function emailExiste(correo = "") {
+  const user = await adminModel.findOne({ email: correo });
+  if (user) {
+    throw new Error(`The email ${user.email} already exists`);
+  }
+}
+
 /*
 export const existeAdminById = async (id = "") => {
   const existeAdmin = await adminModel.findOne({ _id: id });
@@ -22,11 +61,3 @@ export async function existeNombre(nombre = "") {
     }
 };
 */
-
-export async function emailExists(correo = "") {
-  const user = await adminModel.findOne({ email: correo });
-  if (user) {
-      throw new Error(`The email ${user.email} already exists`);
-  }
-}
-
