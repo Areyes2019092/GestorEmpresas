@@ -1,0 +1,33 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Compañia",
+    "dateExported": "2024-03-01T16:51:36.882Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f1c4129b-d949-4f9a-abe0-794d10605140",
+            "colId": "a29ae296-93ba-4c06-9c27-5ad3590cf8f2",
+            "containerId": "",
+            "name": "compañiaPost",
+            "url": "http://localhost:8080/company/v1/companies",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-01T13:52:27.667Z",
+            "modified": "2024-03-01T16:48:05.825Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUyMDZhYTg1OTUzNmE1ZWY4Mzg4MzciLCJpYXQiOjE3MDkzMTE2NjMsImV4cCI6MTcwOTMxODg2M30.aziABBN6ECDa0IPiAdQ_CKCOdBWy2y5Jzd7BbBaK5xQ"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Mcdonalds\",\n  \"nivelImpacto\": \"Importante\",\n  \"experiencia\": 1,\n  \"category\": \"programacion\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

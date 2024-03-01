@@ -1,5 +1,5 @@
-import adminModel from "../admin/admin.model.js";
 import companyModel from "../company/company.model.js";
+import userModel from "../user/user.model.js";
 
 export async function impactoExiste(nivelImpacto = "") {
   if (
@@ -7,12 +7,12 @@ export async function impactoExiste(nivelImpacto = "") {
     nivelImpacto !== "Considerable" &&
     nivelImpacto !== "Desechable"
   ) {
-    throw new Error("Debe poner un nivel de importancia");
+    throw new Error("Este campo no puede estar vacia");
   }
 }
 
 export async function usuarioExiste(correo = "") {
-  const user = await adminModel.findOne({ email: correo });
+  const user = await userModel.findOne({ email: correo });
   if (user) {
     throw new Error("El usuario ya existe");
   }
@@ -33,7 +33,7 @@ export async function categoryExiste(category = "") {
 }
 
 export async function emailExiste(correo = "") {
-  const user = await adminModel.findOne({ email: correo });
+  const user = await userModel.findOne({ email: correo });
   if (user) {
     throw new Error(`The email ${user.email} already exists`);
   }
@@ -41,7 +41,7 @@ export async function emailExiste(correo = "") {
 
 /*
 export const existeAdminById = async (id = "") => {
-  const existeAdmin = await adminModel.findOne({ _id: id });
+  const existeAdmin = await userModel.findOne({ _id: id });
   if (!existeAdmin) {
     throw new Error("El admin no se encuentra");
   }

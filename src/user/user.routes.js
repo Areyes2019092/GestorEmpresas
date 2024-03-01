@@ -2,7 +2,7 @@ import { Router } from "express";
 import { check } from "express-validator";
 import { emailExiste } from "../helpers/db-validator.js";
 import { validarCampos } from "../middlewares/validarCampos.js";
-import { usuarioLogin, usuarioRegistrar } from "./admin.controller.js";
+import { usuarioLogin, usuarioRegistrar } from "./user.controller.js";
 
 const router = Router();
 

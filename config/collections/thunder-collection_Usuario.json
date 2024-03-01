@@ -1,0 +1,47 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Usuario",
+    "dateExported": "2024-03-01T16:51:52.634Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "66cb737d-01cc-4f04-8f4e-4bb751f6ab93",
+            "colId": "b0d033bb-c82d-4e77-9655-d4cab04fb8e1",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:8080/company/v1/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-01T13:52:27.677Z",
+            "modified": "2024-03-01T16:47:26.925Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"angelDaniel@gmail.com\",\n  \"password\" : \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6694cc08-98a4-489c-b3c6-e27b43fa9005",
+            "colId": "b0d033bb-c82d-4e77-9655-d4cab04fb8e1",
+            "containerId": "",
+            "name": "registrarse",
+            "url": "http://localhost:8080/company/v1/users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-01T13:52:27.678Z",
+            "modified": "2024-03-01T16:47:38.506Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\" : \"Angel\",\n  \"email\": \"angelDaniel@gmail.com\",\n  \"password\" : \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

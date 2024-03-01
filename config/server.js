@@ -1,10 +1,10 @@
 "use strict";
 
-import cors from 'cors';
+import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import adminRoutes from "../src/admin/admin.routes.js";
+import userRoutes from "../src/user/user.routes.js";
 import companyRoutes from "../src/company/company.routes.js";
 import { dbConnection } from "./mongo.js";
 
@@ -13,7 +13,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.userPath = "/company/v1/users";
-    this.companyPath = "/company/v1/companies";
+    this.companyPath = "/company/v1/companies"; //localhost:8080/company/v1/users
 
     this.middlewares();
     this.conectarDB();
@@ -37,7 +37,7 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.userPath, adminRoutes);
+    this.app.use(this.userPath, userRoutes);
     this.app.use(this.companyPath, companyRoutes);
   }
 

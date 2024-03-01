@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const AdminSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
     required: [true, "El nombre debe de ser obligatorio"],
@@ -13,16 +13,16 @@ const AdminSchema = mongoose.Schema({
     type: String,
     required: [true, "La contraseña debe de ser obligatiorio"],
   },
-  condition:{
+  condition: {
     type: Boolean,
-    default: true
+    default: true,
   },
 });
 
-AdminSchema.methods.toJSON = function(){
-  const { __v, password, _id, ...admin } = this.toObject();
-  admin.uid = _id;
-  return admin;
-}
+UserSchema.methods.toJSON = function () {
+  const { __v, password, _id, ...user } = this.toObject();
+  user.uid = _id;
+  return user;
+};
 
-export default mongoose.model('Admin', AdminSchema)
+export default mongoose.model("User", UserSchema);
