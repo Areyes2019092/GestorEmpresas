@@ -1,11 +1,7 @@
-const { Router } = require("express");
-const { check } = require("express-validator");
+import { Router } from "express";
+import { check } from "express-validator";
+import { validateJWT } from "../middlewares/jwt-validate";
 
-const { existeCorreo, existeCompanyById } = require("../helpers/db-validator");
+const router = Router();
 
-const {
-  getCompany,
-  getCompanyById,
-  companyPost,
-  companyDelete,
-} = require("../controllers/company.controller");
+export default router;
