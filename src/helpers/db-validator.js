@@ -39,6 +39,14 @@ export async function emailExiste(correo = "") {
   }
 }
 
+
+export async function companyIdExiste(id = "") {
+  const company = await companyModel.findById(id);
+  if (!company) {
+    throw new Error("La compania que busca no existe");
+  }
+}
+
 /*
 export const existeAdminById = async (id = "") => {
   const existeAdmin = await userModel.findOne({ _id: id });
