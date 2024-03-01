@@ -1,52 +1,34 @@
-const { response, json } = require("express");
-const bcrypt = require("bcrypt");
+import { response, request } from "express";
+import bcryptjs from "bcrypt";
+import { generateJWT } from "../helpers/jwt-generate";
+import adminModel from "./admin.model";
 
-const Admin = require("../models/admin.model");
-const { check } = require("express-validator");
-const { existeAdminById } = require("../helpers/db-validator");
-const { generateJWT } = require("../helpers/jwt-generate")
-
-const getAdmin = async (req, res = response) => {
-    const query = { estado: true };
-
-    const [total, admins] = await Promise.all([
-        Admin.countDocuments(query),
-        Admin.find(query),
-    ]);
-
-    res.status(200).json({
-        total,
-        admins,
-    });
-};
-
-const getAdminById = async (req, res = response) => {
-    const { id } = req.params;
-    const admin = await Admin.findOne({ _id: id });
-    res.status(200).json({
-        admin,
-    });
-};
-
-const AdminLogin = async (req, res) => {
-    const { correo, password } = req.body;
-    const admin = await Admin.findOne({ correo: correo, password: password });
-    if (!admin) {
-        return res.status(400).json({ msg: "Datos Incorrectos" });
+export const usuarioLogin = async(req, res) => {
+    const { email, password } = req.body;
+    const user = await adminModel.findOne({email: email});
+    const acceso = bcryptjs.compareSync(password, user.password);
+    if (!acceso){
+        return res.status(400).json({ msg: "Contraseña incorrecta"});
     }
-
-    const token = await generateJWT(admin.id);
+    const tok = await generateJWT(user.id);
     res.status(200).json({
-        msg: "Acceso concedido",
-        token,
+        msg: "Bienvenido",
+        tok,
     });
 };
 
+export const usuarioRegistrar = async(req, res) =>{
+    const { name, email, password } = req.body;
+    try{
+        const user = new adminModel({name, email, password});
+        const salt = bcryptjs.genSalt();
+        user.password = bcryptjs.hashSync(password, salt);
 
+        await user.save();
 
-module.exports = {
-    getAdmin,
-    getAdminById,
-    AdminLogin,
-}
+        res.status(200).json({user})
 
+    } catch(error){
+        res.status(400).json({error: error.message});
+    }
+};

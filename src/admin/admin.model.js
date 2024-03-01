@@ -1,18 +1,28 @@
-const { Schema, model } = require("mongoose");
+import mongoose from "mongoose";
 
-const AdminSchema = Schema({
-  nombre: {
+const AdminSchema = mongoose.Schema({
+  name: {
     type: String,
     required: [true, "El nombre debe de ser obligatorio"],
   },
-  correo: {
+  email: {
     type: String,
     required: [true, "El correo debe de ser obligatiorio"],
   },
-  estado: {
+  password: {
+    type: String,
+    required: [true, "La contraseña debe de ser obligatiorio"],
+  },
+  condition:{
     type: Boolean,
-    default: true,
+    default: true
   },
 });
 
-module.exports = model("Admin", AdminSchema);
+AdminSchema.methods.toJSON = function(){
+  const { __v, password, _id, ...admin } = this.toObject();
+  admin.uid = _id;
+  return admin;
+}
+
+export default mongoose.model('Admin', AdminSchema)

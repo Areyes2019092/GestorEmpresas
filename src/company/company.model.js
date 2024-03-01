@@ -1,19 +1,30 @@
-const { Schema, model } = require("mongoose");
+import mongoose from "mongoose";
 
-const CompanySchema = Schema({
-    nombre: {
+const CompanySchema = mongoose.Schema({
+    name: {
         type: String,
         required: [true, "El nombre de la empresa es obligatorio"],
     },
-    correo: {
+    email: {
         type: String,
         required: [true, "La compañia debe tener un email"]
     },
-    estado: {
+    password: {
+        type: String,
+        required: [true, "La contraseña es obligatoria"]
+    },
+    condition: {
         type: Boolean,
-        default: true,
-    }
+        default: true
+    },
+});
 
-})
+CompanySchema.methods.toJSON = function (){
+    const { __v, password, _id, ...company} = this.toObject();
+    company.uid = _id;
+    return company;
 
-module.exports = model("Company", CompanySchema);
+}
+
+
+export default mongoose.model('Company', CompanySchema)
