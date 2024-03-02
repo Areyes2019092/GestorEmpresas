@@ -1,5 +1,6 @@
 import { response } from "express";
 import companyModel from "./company.model.js";
+import ExcelJS from "exceljs";
 
 export const companyPOST = async (req, res) => {
   const { name, nivelImpacto, experiencia, category } = req.body;
@@ -106,6 +107,50 @@ export const companyGET = async (req, res = response) => {
 
 
 };
+
+export const reporteGet = async(req, res = response) =>{
+  try{
+    const companies = await companyModel.find();
+    const excel = new ExcelJS.Excel();
+    const reporte = excel.addReporte("Companies");
+
+    reporte.addRow([
+      "Nombre",
+      "Nivel de Impacto",
+      "Años de experiencia",
+      "Categoria",
+    ]);
+
+    companies.forEach((company)=>{
+      reporte.addRow([
+        company.name,
+        company.nivelImpacto,
+        company.experiencia,
+        company.category,
+      ])
+    });
+
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    );
+
+    res.setHeader(
+      "Content-Disposition",
+      'attachment; filename="ReporteCompañia.xlsx"'
+    )
+
+    await excel.xlsx.write(res);
+    res.end();
+
+  }catch(error){
+    return res.status(400).json({
+      msg: "Error al generar reporte"
+    });
+  }
+};
+
+
 
 /*
 
