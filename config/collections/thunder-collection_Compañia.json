@@ -1,20 +1,20 @@
 {
     "client": "Thunder Client",
     "collectionName": "Compañia",
-    "dateExported": "2024-03-01T16:51:36.882Z",
+    "dateExported": "2024-03-02T14:09:30.763Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "f1c4129b-d949-4f9a-abe0-794d10605140",
-            "colId": "a29ae296-93ba-4c06-9c27-5ad3590cf8f2",
+            "_id": "8ad171cd-d8f2-47b9-9959-733e7a58f467",
+            "colId": "c72bc820-34ad-4cf0-a92a-770b495f248c",
             "containerId": "",
             "name": "compañiaPost",
             "url": "http://localhost:8080/company/v1/companies",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-03-01T13:52:27.667Z",
-            "modified": "2024-03-01T16:48:05.825Z",
+            "created": "2024-03-02T13:47:50.678Z",
+            "modified": "2024-03-02T13:47:50.678Z",
             "headers": [
                 {
                     "name": "x-token",
@@ -27,6 +27,68 @@
                 "raw": "{\n  \"name\": \"Mcdonalds\",\n  \"nivelImpacto\": \"Importante\",\n  \"experiencia\": 1,\n  \"category\": \"programacion\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "cde3d852-c9be-442f-827d-2b1d056dbdde",
+            "colId": "c72bc820-34ad-4cf0-a92a-770b495f248c",
+            "containerId": "",
+            "name": "compañiaPut",
+            "url": "http://localhost:8080/company/v1/companies/f1c4129b-d949-4f9a-abe0-794d10605140",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-02T13:48:17.218Z",
+            "modified": "2024-03-02T14:02:28.767Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUyMDZhYTg1OTUzNmE1ZWY4Mzg4MzciLCJpYXQiOjE3MDkzMTE2NjMsImV4cCI6MTcwOTMxODg2M30.aziABBN6ECDa0IPiAdQ_CKCOdBWy2y5Jzd7BbBaK5xQ"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Burger King\",\n  \"nivelImpacto\": \"Desechable\",\n  \"experiencia\": 4,\n  \"category\":\"programacion\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f13e5715-1b3f-4ab2-8c70-531f2deb8350",
+            "colId": "c72bc820-34ad-4cf0-a92a-770b495f248c",
+            "containerId": "",
+            "name": "compañiaGet",
+            "url": "http://localhost:8080/company/v1/companies/2",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-02T13:49:03.894Z",
+            "modified": "2024-03-02T14:00:06.242Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUyMDZhYTg1OTUzNmE1ZWY4Mzg4MzciLCJpYXQiOjE3MDkzMTE2NjMsImV4cCI6MTcwOTMxODg2M30.aziABBN6ECDa0IPiAdQ_CKCOdBWy2y5Jzd7BbBaK5xQ"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "bcacf4da-d7b8-40e8-80d5-16a0139a6849",
+            "colId": "c72bc820-34ad-4cf0-a92a-770b495f248c",
+            "containerId": "",
+            "name": "reporteGet",
+            "url": "http://localhost:8080/company/v1/report",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-03-02T13:51:50.451Z",
+            "modified": "2024-03-02T14:08:34.826Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUyMDZhYTg1OTUzNmE1ZWY4Mzg4MzciLCJpYXQiOjE3MDkzMTE2NjMsImV4cCI6MTcwOTMxODg2M30.aziABBN6ECDa0IPiAdQ_CKCOdBWy2y5Jzd7BbBaK5xQ"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ]

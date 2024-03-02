@@ -1,20 +1,20 @@
 {
     "client": "Thunder Client",
     "collectionName": "Usuario",
-    "dateExported": "2024-03-01T16:51:52.634Z",
+    "dateExported": "2024-03-02T14:09:40.487Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "66cb737d-01cc-4f04-8f4e-4bb751f6ab93",
-            "colId": "b0d033bb-c82d-4e77-9655-d4cab04fb8e1",
+            "_id": "04af89a5-e96a-46ab-b964-af6009f87dd4",
+            "colId": "040418f2-e07c-44c7-a25d-960c76ae659c",
             "containerId": "",
             "name": "login",
             "url": "http://localhost:8080/company/v1/users",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-03-01T13:52:27.677Z",
-            "modified": "2024-03-01T16:47:26.925Z",
+            "created": "2024-03-02T13:47:50.700Z",
+            "modified": "2024-03-02T13:47:50.700Z",
             "headers": [],
             "params": [],
             "body": {
@@ -25,15 +25,15 @@
             "tests": []
         },
         {
-            "_id": "6694cc08-98a4-489c-b3c6-e27b43fa9005",
-            "colId": "b0d033bb-c82d-4e77-9655-d4cab04fb8e1",
+            "_id": "874193b2-2a9a-49b0-95fa-a11544eb001a",
+            "colId": "040418f2-e07c-44c7-a25d-960c76ae659c",
             "containerId": "",
             "name": "registrarse",
             "url": "http://localhost:8080/company/v1/users",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-03-01T13:52:27.678Z",
-            "modified": "2024-03-01T16:47:38.506Z",
+            "created": "2024-03-02T13:47:50.701Z",
+            "modified": "2024-03-02T13:47:50.701Z",
             "headers": [],
             "params": [],
             "body": {
