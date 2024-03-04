@@ -17,6 +17,21 @@ export const companyPOST = async (req, res) => {
   });
 };
 
+/*
+
+const companyDelete = async (req, res) => {
+    const { id } = req.params;
+    await Company.findByIdAndUpdate(id, { estado: false });
+
+    const company = await Company.findOne({ _id: id });
+    res.status(200).json({
+        msg: "Compañia eliminada",
+        company,
+    })
+};
+
+*/
+
 export const companyPUT = async (req, res) => {
   var nombre = true;
   const { id } = req.params;
@@ -55,6 +70,20 @@ export const companyPUT = async (req, res) => {
   res.status(400).json({ msg: "La compañia se actualizo de manera exitosa" });
 };
 
+/* 
+const companyDelete = async (req, res) => {
+    const { id } = req.params;
+    await Company.findByIdAndUpdate(id, { estado: false });
+
+    const company = await Company.findOne({ _id: id });
+    res.status(200).json({
+        msg: "Compañia eliminada",
+        company,
+    })
+};
+
+
+*/
 export const companyGET = async (req, res = response) => {
   const { order } = req.params;
   let filtrar, ordenar;
@@ -108,6 +137,21 @@ export const companyGET = async (req, res = response) => {
 
 };
 
+/*
+const companyPut = async (req, res) => {
+    const { id } = req.params;
+    const { companyId, correo, password, ...resto } = req.body;
+    await Company.findByIdAndUpdate(id, resto);
+
+    const company = await Company.findOne({ _id: id });
+
+    res.status(200).json({
+        msg: "compania actualizada",
+        company,
+    });
+};
+*/
+
 export const reporteGet = async(req, res = response) =>{
   try{
     const companies = await companyModel.find();
@@ -154,30 +198,6 @@ export const reporteGet = async(req, res = response) =>{
 
 /*
 
-const companyDelete = async (req, res) => {
-    const { id } = req.params;
-    await Company.findByIdAndUpdate(id, { estado: false });
-
-    const company = await Company.findOne({ _id: id });
-    res.status(200).json({
-        msg: "Compañia eliminada",
-        company,
-    })
-};
-
-
-const companyPut = async (req, res) => {
-    const { id } = req.params;
-    const { companyId, correo, password, ...resto } = req.body;
-    await Company.findByIdAndUpdate(id, resto);
-
-    const company = await Company.findOne({ _id: id });
-
-    res.status(200).json({
-        msg: "compania actualizada",
-        company,
-    });
-};
 
 const getCompany = async (req, res = response) => {
   const query = { estado: true };

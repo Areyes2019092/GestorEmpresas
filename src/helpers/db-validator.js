@@ -1,6 +1,16 @@
 import companyModel from "../company/company.model.js";
 import userModel from "../user/user.model.js";
 
+/*
+export const existeAdminById = async (id = "") => {
+  const existeAdmin = await userModel.findOne({ _id: id });
+  if (!existeAdmin) {
+    throw new Error("El admin no se encuentra");
+  }
+};
+
+*/
+
 export async function impactoExiste(nivelImpacto = "") {
   if (
     nivelImpacto !== "Importante" &&
@@ -17,6 +27,15 @@ export async function usuarioExiste(correo = "") {
     throw new Error("El usuario ya existe");
   }
 }
+/*
+export const existeCompanyById = async (id = "") => {
+  const existeCompany = await companyModel.findOne({ _id: id });
+  if (!existeCompany) {
+    throw new Error("La compañia no existe");
+  }
+};
+
+*/
 
 export async function companyExiste(name = "") {
   const company = await companyModel.findOne({ name: name });
@@ -48,20 +67,6 @@ export async function companyIdExiste(id = "") {
 }
 
 /*
-export const existeAdminById = async (id = "") => {
-  const existeAdmin = await userModel.findOne({ _id: id });
-  if (!existeAdmin) {
-    throw new Error("El admin no se encuentra");
-  }
-};
-
-export const existeCompanyById = async (id = "") => {
-  const existeCompany = await companyModel.findOne({ _id: id });
-  if (!existeCompany) {
-    throw new Error("La compañia no existe");
-  }
-};
-
 export async function existeNombre(nombre = "") { 
     const company = await companyModel.findOne({ nombre: nombre });
     if (!company) { 
